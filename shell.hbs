@@ -55,6 +55,13 @@
 		font-weight: bold;
 		color: @a-fg-color;
 	}
+	@media (max-width: 600px)
+	{
+		.site-slogan
+		{
+			display: none;
+		}
+	}
 	.site-title > a
 	{
 		color: inherit;
@@ -70,7 +77,9 @@
 			<a trim href="/home">
 				AirOk
 			</a>
-			&mdash; Passagens aéreas inteligentes
+			<span class="site-slogan">
+				&mdash; Passagens aéreas inteligentes
+			</span>
 		</h1>
 		<a trim href="/sign-in" class="sign-in-button btn btn-danger">
 			Entrar

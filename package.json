@@ -1,0 +1,17 @@
+{
+  "name": "AirOk",
+  "version": "0.0.0",
+  "homepage": "https://github.com/n2liquid/airok",
+  "author": "Guilherme Vieira <super.driver.512@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/n2liquid/airok.git"
+  },
+  "dependencies": {
+    "wysia": "https://github.com/n2liquid/wysia/tarball/master"
+  },
+  "license": "GPLv3",
+  "engines": {
+    "node": ">=0.10"
+  }
+}

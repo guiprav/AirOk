@@ -1,0 +1,82 @@
+<style type="text/less">
+	@import 'airok-mixins.less';
+	#content
+	{
+		position: absolute;
+		left: 0;
+		top: 54px;
+		right: 0;
+		bottom: 0;
+		display: flex;
+		align-items: center;
+	}
+	.register-form
+	{
+		flex-grow: 1;
+	}
+	[step-name="route"]
+	{
+		text-align: center;
+	}
+	.pitch-line
+	{
+		margin-bottom: 20px;
+		.padding-left-right(70px);
+		line-height: 2em;
+		font-size: 24px;
+		font-weight: lighter;
+	}
+	.fields-area
+	{
+		.padding-top-bottom(40px);
+		background-color: rgba(255, 255, 255, 0.4);
+	}
+	.origin-field,
+	.destination-field
+	{
+		display: inline-block;
+		width: 400px;
+	}
+	.origin-field-label,
+	.destination-field-label
+	{
+		display: block;
+		font-size: 30px;
+		font-weight: 200;
+	}
+	[name="origin"],
+	[name="destination"]
+	{
+		width: 200px;
+		margin-top: 40px;
+	}
+</style>
+<form method="get" action="/register" current-step="route" class="register-form">
+	<div step-name="route">
+		<div class="centering-padder">
+			<p class="pitch-line">
+				Já pensou viajar sem ter que se preocupar com passagens? A gente sim.
+				Procuramos 24 horas por dia pela melhor passagem para você
+				enquanto você arruma as malas e se prepara para a viagem ;)
+			</p>
+		</div>
+		<div class="fields-area">
+			<label class="origin-field">
+				<span class="origin-field-label">
+					Onde você está?
+				</span>
+				<select name="origin">
+					<option>Porto Alegre, RS</option>
+				</select>
+			</label>
+			<label class="destination-field">
+				<span class="destination-field-label">
+					Para onde gostaria de ir?
+				</span>
+				<select name="destination">
+					<option>Campina Grande, PB</option>
+				</select>
+			</label>
+		</div>
+	</div>
+</form>

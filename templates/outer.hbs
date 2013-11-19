@@ -7,41 +7,9 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
-<link rel="stylesheet/less" href="/airok.less">
 <style type="text/less">
 	@a-fg-color: #e8e8e8;
-	.margin-left-right(@value)
-	{
-		margin-left: @value;
-		margin-right: @value;
-	}
-	.margin-top-bottom(@value)
-	{
-		margin-top: @value;
-		margin-bottom: @value;
-	}
-	.padding-left-right(@value)
-	{
-		padding-left: @value;
-		padding-right: @value;
-	}
-	.padding-top-bottom(@value)
-	{
-		padding-top: @value;
-		padding-bottom: @value;
-	}
-	.centering-margins()
-	{
-		.margin-left-right(auto);
-	}
-	:first-child
-	{
-		margin-top: 0;
-	}
-	:last-child
-	{
-		margin-bottom: 0;
-	}
+	@import 'airok-mixins.less';
 	body:before
 	{
 		position: fixed;
@@ -55,19 +23,33 @@
 		background-size: cover;
 		opacity: 0.3;
 	}
-	.centering-padder
+	body
 	{
-		width: 1024px;
-		.centering-margins();
+		font-family: Verdana, sans-serif;
 	}
+	:first-child
+	{
+		margin-top: 0;
+	}
+	:last-child
+	{
+		margin-bottom: 0;
+	}
+        .centering-padder
+        {
+                width: 1024px;
+                .centering-margins();
+        }
 	.site-header
 	{
+		.padding-top-bottom(10px);
 		background-image: linear-gradient(to bottom, #a90329 0%,#8f0222 44%,#6d0019 100%);
 	}
 	.site-title
 	{
-		.padding-top-bottom(10px);
-		font-family: Verdana, sans-serif;
+		float: left;
+		margin-bottom: 0;
+		.padding-top-bottom(4px);
 		font-size: 24px;
 		font-weight: bold;
 		color: @a-fg-color;
@@ -76,16 +58,22 @@
 	{
 		color: inherit;
 	}
+	.sign-in-button
+	{
+		float: right;
+	}
 </style>
-<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.4.1/less.min.js"></script>
 <header class="site-header">
-	<div class="centering-padder">
+	<div class="centering-padder clearfix">
 		<h1 class="site-title">
 			<a trim href="/home">
 				AirOk
 			</a>
 			&mdash; Passagens aéreas inteligentes
 		</h1>
+		<a trim href="/sign-in" class="sign-in-button btn btn-danger">
+			Entrar
+		</a>
 	</div>
 </header>
 <div id="content">
@@ -100,3 +88,4 @@
 		}
 	);
 </script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.4.1/less.min.js"></script>

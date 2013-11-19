@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "homepage": "https://github.com/n2liquid/airok",
   "author": "Guilherme Vieira <super.driver.512@gmail.com>",
+  "scripts": {
+    "start": "node ./node_modules/.bin/wysia"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/n2liquid/airok.git"

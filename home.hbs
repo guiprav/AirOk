@@ -13,42 +13,43 @@
 	.register-form
 	{
 		flex-grow: 1;
-	}
-	[step-name="route"]
-	{
-		text-align: center;
-	}
-	.pitch-line
-	{
-		margin-bottom: 40px;
-		.padding-left-right(70px);
-		line-height: 2em;
-		font-size: 24px;
-		font-weight: lighter;
-	}
-	.fields-area
-	{
-		.padding-top-bottom(40px);
-		background-color: rgba(255, 255, 255, 0.4);
-	}
-	.origin-field,
-	.destination-field
-	{
-		display: inline-block;
-		width: 400px;
-	}
-	.origin-field-label,
-	.destination-field-label
-	{
-		display: block;
-		font-size: 30px;
-		font-weight: 200;
-	}
-	[name="origin"],
-	[name="destination"]
-	{
-		width: 200px;
-		margin-top: 40px;
+
+		[step-name="route"]
+		{
+			text-align: center;
+		}
+		.pitch-line
+		{
+			margin-bottom: 40px;
+			.padding-left-right(70px);
+			line-height: 2em;
+			font-size: 24px;
+			font-weight: lighter;
+		}
+		.fields-area
+		{
+			.padding-top-bottom(40px);
+			background-color: rgba(255, 255, 255, 0.4);
+		}
+		.origin-field,
+		.destination-field
+		{
+			display: inline-block;
+			width: 400px;
+		}
+		.origin-field-label,
+		.destination-field-label
+		{
+			display: block;
+			font-size: 30px;
+			font-weight: 200;
+		}
+		[name="origin"],
+		[name="destination"]
+		{
+			width: 200px;
+			margin-top: 40px;
+		}
 	}
 </style>
 <form method="get" action="/register" current-step="route" class="register-form">

@@ -14,6 +14,14 @@
 	{
 		flex-grow: 1;
 
+		& > [step-name]
+		{
+			transition: opacity .2s;
+		}
+		&:not([current-step="route"]) > [step-name="route"]
+		{
+			opacity: 0;
+		}
 		[step-name="route"]
 		{
 			text-align: center;
@@ -50,6 +58,12 @@
 			width: 200px;
 			margin-top: 40px;
 		}
+		.next-button
+		{
+			margin-top: 40px;
+			color: black;
+			text-decoration: none;
+		}
 	}
 </style>
 <form method="get" action="/register" current-step="route" class="register-form">
@@ -79,5 +93,8 @@
 				</select>
 			</label>
 		</div>
+		<a class="next-button btn btn-default" onclick="$(this).parents('.register-form').attr('current-step', 'dates')">
+			Escolher datas
+		</a>
 	</div>
 </form>

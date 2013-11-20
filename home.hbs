@@ -37,7 +37,6 @@
 		}
 		.fields-area
 		{
-			.padding-top-bottom(40px);
 			background-color: rgba(255, 255, 255, 0.4);
 		}
 		.origin-field,
@@ -46,18 +45,33 @@
 			display: inline-block;
 			width: 400px;
 		}
+		.origin-field
+		{
+			margin-top: 40px;
+			margin-bottom: 20px;
+		}
+		.destination-field
+		{
+			margin-top: 20px;
+			margin-bottom: 40px;
+		}
 		.origin-field-label,
 		.destination-field-label
 		{
 			display: block;
 			font-size: 30px;
 			font-weight: 200;
+
+			@media (max-width: 600px)
+			{
+				font-size: 22px;
+			}
 		}
 		[name="origin"],
 		[name="destination"]
 		{
-			width: 200px;
-			margin-top: 40px;
+			width: 250px;
+			margin-top: 30px;
 		}
 		.next-button
 		{

@@ -12,15 +12,12 @@
 
 		& > [step-name]
 		{
-			transition: opacity .2s;
-		}
-		&:not([current-step="route"]) > [step-name="route"]
-		{
-			opacity: 0;
-		}
-		[step-name="route"]
-		{
 			text-align: center;
+		}
+		&:not([current-step="route"]) > [step-name="route"],
+		&:not([current-step="schedule"]) > [step-name="schedule"]
+		{
+			display: none;
 		}
 		.pitch-line
 		{
@@ -108,8 +105,11 @@
 				</select>
 			</label>
 		</div>
-		<a class="next-button btn btn-default" onclick="$(this).parents('.register-form').attr('current-step', 'dates')">
+		<a class="next-button btn btn-default" onclick="$(this).parents('.register-form').attr('current-step', 'schedule')">
 			Escolher datas
 		</a>
+	</div>
+	<div step-name="schedule">
+		Not implemented.
 	</div>
 </form>

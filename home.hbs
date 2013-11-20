@@ -2,11 +2,6 @@
 	@import 'airok-mixins.less';
 	#content
 	{
-		position: absolute;
-		left: 0;
-		top: 54px;
-		right: 0;
-		bottom: 0;
 		display: flex;
 		align-items: center;
 	}
@@ -28,11 +23,17 @@
 		}
 		.pitch-line
 		{
+			margin-top: 40px;
 			margin-bottom: 40px;
 			.padding-left-right(70px);
 			line-height: 2em;
 			font-size: 24px;
 			font-weight: lighter;
+
+			@media (max-width: 600px)
+			{
+				font-size: 18px;
+			}
 		}
 		.fields-area
 		{

@@ -1,0 +1,75 @@
+@import 'basis';
+*
+{
+	box-sizing: border-box;
+}
+body:before
+{
+	content: '';
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -100;
+	background-image: url('a-bg-resort.jpg');
+	background-size: cover;
+	opacity: 0.3;
+}
+body
+{
+	font-family: Verdana, sans-serif;
+}
+:first-child
+{
+	margin-top: 0;
+}
+:last-child
+{
+	margin-bottom: 0;
+}
+.centering-padder
+{
+	max-width: 1024px;
+	.centering-margins();
+}
+.site-header
+{
+	padding: 10px;
+	background-image: linear-gradient(to bottom, #a90329 0%,#8f0222 44%,#6d0019 100%);
+}
+.site-title
+{
+	float: left;
+	margin-bottom: 0;
+	.padding-top-bottom(4px);
+	font-size: 24px;
+	font-weight: lighter;
+	color: @a-fg-color;
+	& > a
+	{
+		color: inherit;
+	}
+}
+.site-slogan
+{
+	@media (max-width: 600px)
+	{
+		display: none;
+	}
+}
+.sign-in-button
+{
+	float: right;
+}
+#content
+{
+	position: absolute;
+	top: 0;
+	width: 100%;
+	min-height: 100%;
+	@header-height: 54px;
+	@effective-top-bottom-padding: 10px;
+	padding-top: @header-height + @effective-top-bottom-padding;
+	padding-bottom: @effective-top-bottom-padding;
+}

@@ -5,7 +5,7 @@
 		display: flex;
 		align-items: center;
 	}
-	.register-form
+	.signaling-form
 	{
 		flex-grow: 1;
 		.margin-top-bottom(30px);
@@ -78,7 +78,7 @@
 		}
 	}
 </style>
-<form method="get" action="/register" current-step="route" class="register-form">
+<form method="get" action="/signal" current-step="route" class="signaling-form">
 	<div step-name="route">
 		<div class="centering-padder">
 			<p class="pitch-line">
@@ -105,7 +105,7 @@
 				</select>
 			</label>
 		</div>
-		<a class="next-button btn btn-default" onclick="$(this).parents('.register-form').attr('current-step', 'schedule')">
+		<a class="next-button btn btn-default" onclick="$(this).parents('.signaling-form').attr('current-step', 'schedule')">
 			Escolher datas
 		</a>
 	</div>

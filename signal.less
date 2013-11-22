@@ -6,6 +6,22 @@
 }
 .signaling-form
 {
+	.a-signaling-form-field-label()
+	{
+		display: block;
+		font-size: 30px;
+		font-weight: 200;
+		@media (max-width: 600px)
+		{
+			font-size: 22px;
+		}
+	}
+	.a-signaling-form-button()
+	{
+		width: 250px;
+		margin-top: 30px;
+		.margin-left-right(20px);
+	}
 	flex-grow: 1;
 	.margin-top-bottom(30px);
 	&:not([current-step="route"]) > [step="route"],
@@ -29,71 +45,6 @@
 			font-size: 18px;
 		}
 	}
-	.fields-area
-	{
-		background-color: @bb-bg-color;
-	}
-	.origin-field,
-	.destination-field
-	{
-		display: inline-block;
-		width: 400px;
-	}
-	.origin-field
-	{
-		margin-top: 40px;
-		margin-bottom: 20px;
-	}
-	.destination-field
-	{
-		margin-top: 20px;
-		margin-bottom: 40px;
-	}
-	.a-field-label
-	{
-		display: block;
-		font-size: 30px;
-		font-weight: 200;
-		@media (max-width: 600px)
-		{
-			font-size: 22px;
-		}
-	}
-	[name="origin"],
-	[name="destination"]
-	{
-		width: 250px;
-		margin-top: 30px;
-	}
-	.back-button,
-	.next-button
-	{
-		width: 250px;
-		margin-top: 30px;
-		.margin-left-right(20px);
-	}
-	.calendar
-	{
-		margin-top: 15px;
-		.margin-left-right(30px);
-		border: 15px solid @ba-bg-color;
-		border-collapse: separate;
-		border-spacing: 1px;
-		-moz-user-select: none;
-		font-weight: lighter;
-		& > thead > tr > th,
-		& > tbody > tr > td
-		{
-			background-color: @bb-bg-color;
-		}
-		& > thead > tr > th
-		{
-			text-align: center;
-		}
-		& > tbody > tr > td
-		{
-			width: 50px;
-			height: 50px;
-		}
-	}
+	@import 'signal-route';
+	@import 'signal-schedule';
 }

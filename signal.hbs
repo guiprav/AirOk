@@ -8,17 +8,17 @@
 				enquanto você arruma as malas e se prepara para a viagem ;)
 			</p>
 		</div>
-		<div class="fields-area">
-			<label class="origin-field">
-				<span class="a-field-label">
+		<div class="route-fields-area">
+			<label class="route-origin-field">
+				<span class="route-origin-field-label">
 					Onde você está?
 				</span>
 				<select name="origin">
 					<option>Porto Alegre, RS</option>
 				</select>
 			</label>
-			<label class="destination-field">
-				<span class="a-field-label">
+			<label class="route-destination-field">
+				<span class="route-destination-field-label">
 					Para onde gostaria de ir?
 				</span>
 				<select name="destination">
@@ -26,17 +26,17 @@
 				</select>
 			</label>
 		</div>
-		<a class="next-button btn btn-default" onclick="$(this).parents('.signaling-form').attr('current-step', 'schedule')">
+		<a class="route-choose-dates-link btn btn-default" onclick="$(this).parents('.signaling-form').attr('current-step', 'schedule')">
 			Escolher datas &rarr;
 		</a>
 	</div>
 	<div step="schedule">
 		<div>
-			<label class="departure-field">
-				<span class="a-field-label">
+			<label class="schedule-departure-field">
+				<span class="schedule-departure-field-label">
 					Quando você quer sair?
 				</span>
-				<table class="calendar">
+				<table calendar class="schedule-departure-calendar">
 					<thead>
 					</thead>
 					<tbody>
@@ -44,11 +44,11 @@
 				</table>
 				<input type="hidden" name="departure">
 			</label>
-			<label class="return-field">
-				<span class="a-field-label">
+			<label class="schedule-return-field">
+				<span class="schedule-return-field-label">
 					Quando você quer voltar?
 				</span>
-				<table class="calendar">
+				<table calendar class="schedule-return-calendar">
 					<thead>
 					</thead>
 					<tbody>
@@ -57,16 +57,16 @@
 				<input type="hidden" name="return">
 			</label>
 		</div>
-		<a class="back-button btn btn-default" onclick="$(this).parents('.signaling-form').attr('current-step', 'route')">
+		<a class="schedule-change-route-link btn btn-default" onclick="$(this).parents('.signaling-form').attr('current-step', 'route')">
 			&larr; Mudar trajeto
 		</a>
-		<a class="next-button btn btn-default">
+		<a class="schedule-set-prices-link btn btn-default">
 			Especificar preços &rarr;
 		</a>
 	</div>
 </form>
 <script>
-	$('.calendar > thead').replaceWith
+	$('[calendar] > thead').replaceWith
 	(
 		'<thead>'
 			+ '<tr>'
@@ -79,14 +79,14 @@
 			+ '</tr>'
 		+ '</thead>'
 	);
-	$('.calendar > thead > tr:last-child > th').text
+	$('[calendar] > thead > tr:last-child > th').text
 	(
 		function (i)
 		{
 			return ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"][i % 7];
 		}
 	);
-	$('.calendar > tbody').replaceWith
+	$('[calendar] > tbody').replaceWith
 	(
 		'<tbody>'
 			+ new Array(7).join
@@ -97,7 +97,7 @@
 			)
 		+ '</tbody>'
 	);
-	$('.calendar > tbody > tr > td').text
+	$('[calendar] > tbody > tr > td').text
 	(
 		function (i)
 		{
@@ -107,7 +107,7 @@
 			else return (i - first) % 30 + 1;
 		}
 	);
-	$('.calendar > tbody > tr > td').click
+	$('[calendar] > tbody > tr > td').click
 	(
 		function ()
 		{

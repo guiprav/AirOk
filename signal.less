@@ -49,8 +49,7 @@
 		margin-top: 20px;
 		margin-bottom: 40px;
 	}
-	.origin-field-label,
-	.destination-field-label
+	.a-field-label
 	{
 		display: block;
 		font-size: 30px;
@@ -66,8 +65,34 @@
 		width: 250px;
 		margin-top: 30px;
 	}
+	.back-button,
 	.next-button
 	{
+		width: 250px;
 		margin-top: 40px;
+		.margin-left-right(20px);
+	}
+	.calendar
+	{
+		margin-top: 30px;
+		.margin-left-right(40px);
+		border-collapse: separate;
+		border-spacing: 1px;
+		-moz-user-select: none;
+		font-weight: lighter;
+		& > thead > tr > th,
+		& > tbody > tr > td
+		{
+			background-color: rgba(255, 255, 255, 0.4);
+		}
+		& > thead > tr > th
+		{
+			text-align: center;
+		}
+		& > tbody > tr > td
+		{
+			width: 50px;
+			height: 50px;
+		}
 	}
 }

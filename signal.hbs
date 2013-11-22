@@ -10,7 +10,7 @@
 		</div>
 		<div class="fields-area">
 			<label class="origin-field">
-				<span class="origin-field-label">
+				<span class="a-field-label">
 					Onde você está?
 				</span>
 				<select name="origin">
@@ -18,7 +18,7 @@
 				</select>
 			</label>
 			<label class="destination-field">
-				<span class="destination-field-label">
+				<span class="a-field-label">
 					Para onde gostaria de ir?
 				</span>
 				<select name="destination">
@@ -27,10 +27,92 @@
 			</label>
 		</div>
 		<a class="next-button btn btn-default" onclick="$(this).parents('.signaling-form').attr('current-step', 'schedule')">
-			Escolher datas
+			Escolher datas &rarr;
 		</a>
 	</div>
 	<div step-name="schedule">
-		Not implemented.
+		<div>
+			<label class="departure-field">
+				<span class="a-field-label">
+					Quando você quer sair?
+				</span>
+				<table class="calendar">
+					<thead>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+				<input type="hidden" name="departure">
+			</label>
+			<label class="return-field">
+				<span class="a-field-label">
+					Quando você quer voltar?
+				</span>
+				<table class="calendar">
+					<thead>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+				<input type="hidden" name="return">
+			</label>
+		</div>
+		<a class="back-button btn btn-default" onclick="$(this).parents('.signaling-form').attr('current-step', 'route')">
+			&larr; Mudar trajeto
+		</a>
+		<a class="next-button btn btn-default">
+			Especificar preços &rarr;
+		</a>
 	</div>
 </form>
+<script>
+	$('.calendar > thead').replaceWith
+	(
+		'<thead>'
+			+ '<tr>'
+				+ '<th colspan="7">'
+					+ "Novembro"
+				+ '</th>'
+			+ '</tr>'
+			+ '<tr>'
+				+ new Array(8).join('<th></th>')
+			+ '</tr>'
+		+ '</thead>'
+	);
+	$('.calendar > thead > tr:last-child > th').text
+	(
+		function (i)
+		{
+			return ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"][i % 7];
+		}
+	);
+	$('.calendar > tbody').replaceWith
+	(
+		'<tbody>'
+			+ new Array(7).join
+			(
+				'<tr>'
+					+ new Array(8).join('<td></td>')
+				+ '</tr>'
+			)
+		+ '</tbody>'
+	);
+	$('.calendar > tbody > tr > td').text
+	(
+		function (i)
+		{
+			var first = 4;
+
+			if (i < first) return (31 - (first - i) + 1);
+			else return (i - first) % 30 + 1;
+		}
+	);
+	$('.calendar > tbody > tr > td').click
+	(
+		function ()
+		{
+			if (this.style.backgroundColor) this.style.backgroundColor = '';
+			else this.style.backgroundColor = 'rgba(255, 0, 255, 0.15)';
+		}
+	);
+</script>

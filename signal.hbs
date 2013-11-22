@@ -36,25 +36,15 @@
 				<span class="schedule-departure-field-label">
 					Quando você quer sair?
 				</span>
-				<table calendar class="schedule-departure-calendar">
-					<thead>
-					</thead>
-					<tbody>
-					</tbody>
+				<table calendar="departure" class="schedule-departure-calendar">
 				</table>
-				<input type="hidden" name="departure">
 			</label>
 			<label class="schedule-return-field">
 				<span class="schedule-return-field-label">
 					Quando você quer voltar?
 				</span>
-				<table calendar class="schedule-return-calendar">
-					<thead>
-					</thead>
-					<tbody>
-					</tbody>
+				<table calendar="return" month="next" class="schedule-return-calendar">
 				</table>
-				<input type="hidden" name="return">
 			</label>
 		</div>
 		<a class="schedule-change-route-link btn btn-default" onclick="$(this).parents('.signaling-form').attr('current-step', 'route')">
@@ -65,54 +55,109 @@
 		</a>
 	</div>
 </form>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/lang/pt-br.js"></script>
 <script>
-	$('[calendar] > thead').replaceWith
-	(
-		'<thead>'
-			+ '<tr>'
-				+ '<th colspan="7">'
-					+ "Novembro"
-				+ '</th>'
-			+ '</tr>'
-			+ '<tr>'
-				+ new Array(8).join('<th></th>')
-			+ '</tr>'
-		+ '</thead>'
-	);
-	$('[calendar] > thead > tr:last-child > th').text
-	(
-		function (i)
+	function parse_month (month)
+	{
+		switch (month)
 		{
-			return ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"][i % 7];
+			case 'this':
+				month = moment();
+				break;
+			case 'next':
+				month = moment().date(1).add('months', 1);
+				break;
+			case 'previous':
+				month = moment().date(1).subtract('months', 1);
+				break;
+			default:
+				var first_character = month.charAt(0);
+				if (first_character === '+' || first_character === '-')
+				{
+					month = moment().add('months', parseInt(month));
+				}
+				else
+				if (month.indexOf(',') !== -1)
+				{
+					month = moment(month, 'MMMM, YYYY');
+				}
+				else
+				{
+					month = moment(month, 'MMMM');
+				}
+				break;
 		}
-	);
-	$('[calendar] > tbody').replaceWith
+		return month.date(1);
+	}
+	$('[calendar]').each
 	(
-		'<tbody>'
-			+ new Array(7).join
+		function (i, calendar)
+		{
+			calendar = $(calendar);
+			var name = calendar.attr('calendar');
+			calendar.after('<input type="hidden" name="' + name + '">');
+			var month = parse_month(calendar.attr('month') || 'this');
+			var thead = calendar.children('thead');
+			if (thead.length === 0)
+			{
+				calendar.prepend('<thead>');
+				thead = calendar.children('thead');
+			}
+			thead.append
 			(
 				'<tr>'
-					+ new Array(8).join('<td></td>')
+					+ '<th colspan="7">'
+						+ month.format('MMMM, YYYY', 'pt-br')
+					+ '</th>'
 				+ '</tr>'
-			)
-		+ '</tbody>'
-	);
-	$('[calendar] > tbody > tr > td').text
-	(
-		function (i)
-		{
-			var first = 4;
-
-			if (i < first) return (31 - (first - i) + 1);
-			else return (i - first) % 30 + 1;
-		}
-	);
-	$('[calendar] > tbody > tr > td').click
-	(
-		function ()
-		{
-			if (this.style.backgroundColor) this.style.backgroundColor = '';
-			else this.style.backgroundColor = 'rgba(255, 0, 255, 0.15)';
+			);
+			thead.append
+			(
+				'<tr>'
+					+ '<th>'
+						+ "Seq Ter Qua Qui Sex Sáb Dom".replace(/ /g, '</th><th>')
+					+ '</th>'
+				+ '</tr>'
+			);
+			var tbody = calendar.children('tbody');
+			if (tbody.length === 0)
+			{
+				calendar.append('<tbody>');
+				tbody = calendar.children('tbody');
+			}
+			tbody.replaceWith
+			(
+				'<tbody>'
+					+ new Array(6 + 1).join
+					(
+						'<tr>'
+							+ new Array(7 + 1).join('<td></td>')
+						+ '</tr>'
+					)
+				+ '</tbody>'
+			);
+			tbody = calendar.children('tbody');
+			var first_day_of_the_week = (month.day() || 7) - 1;
+			function day_of_the_month_by_index (i)
+			{
+				if (i < first_day_of_the_week)
+				{
+					return month.clone().subtract('days', first_day_of_the_week - i).format('D');
+				}
+				else
+				{
+					return month.clone().add('days', i - first_day_of_the_week).format('D');
+				}
+			}
+			tbody.find('td').attr('day', day_of_the_month_by_index).text(day_of_the_month_by_index);
+			tbody.click
+			(
+				function (event)
+				{
+					$(event.target).toggleClass('selected');
+				}
+			);
 		}
 	);
 </script>

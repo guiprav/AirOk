@@ -1,0 +1,51 @@
+@import 'basis-signaling';
+.signaling-home
+{
+	.a-signaling-container();
+	.pitch-line
+	{
+		margin-bottom: 40px;
+		.padding-left-right(70px);
+		.a-big-text();
+		@media (max-width: 600px)
+		{
+			font-size: 18px;
+		}
+	}
+	.route-fields-area
+	{
+		background-color: @bbaa-bg-color;
+	}
+	.route-origin-field,
+	.route-destination-field
+	{
+		display: inline-block;
+		width: 400px;
+	}
+	.route-origin-field
+	{
+		margin-top: 40px;
+		margin-bottom: 20px;
+	}
+	.route-destination-field
+	{
+		margin-top: 20px;
+		margin-bottom: 40px;
+	}
+	.route-origin-field-label,
+	.route-destination-field-label
+	{
+		display: block;
+		.b-big-text();
+	}
+	[name="origin"],
+	[name="destination"]
+	{
+		width: 250px;
+		margin-top: 30px;
+	}
+	.route-choose-dates-link
+	{
+		.a-signaling-form-button();
+	}
+}

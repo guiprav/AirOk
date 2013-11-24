@@ -155,7 +155,30 @@
 			(
 				function (event)
 				{
-					$(event.target).toggleClass('selected');
+					var $target = $(event.target);
+					$target.toggleClass('selected');
+					var input = $target.parents('table').siblings();
+					var date = month.clone().date($target.attr('day')).format('YYYYMMDD');
+					if ($target.hasClass('selected'))
+					{
+						input.val
+						(
+							function (i, old_value)
+							{
+								return date + ',' + old_value;
+							}
+						);
+					}
+					else
+					{
+						input.val
+						(
+							function (i, old_value)
+							{
+								return old_value.replace(date + ',', '');
+							}
+						);
+					}
 				}
 			);
 		}

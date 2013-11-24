@@ -138,7 +138,7 @@
 				+ '</tbody>'
 			);
 			tbody = calendar.children('tbody');
-			var first_day_of_the_week = (month.day() || 7) - 1;
+			var first_day_of_the_week = month.weekday() - 1;
 			function day_of_the_month_by_index (i)
 			{
 				if (i < first_day_of_the_week)

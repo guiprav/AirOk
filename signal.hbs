@@ -1,28 +1,82 @@
-<link rel="stylesheet/less" type="text/css" href="escolher-datas.less">
-<div class="signaling-schedule">
-	<div class="centering-padder">
-		<label class="schedule-departure-field">
-			<span class="schedule-departure-field-label">
-				Quando você quer sair?
-			</span>
-			<table calendar="departure" class="schedule-departure-calendar">
-			</table>
-		</label>
-		<label class="schedule-return-field">
-			<span class="schedule-return-field-label">
-				Quando você quer voltar?
-			</span>
-			<table calendar="return" month="next" class="schedule-return-calendar">
-			</table>
-		</label>
+<link rel="stylesheet/less" type="text/css" href="signal.less">
+<form method="get" action="/signal" current-step="route" class="signaling-form">
+	<div step="route">
+		<div class="centering-padder">
+			<p class="pitch-line">
+				Já pensou viajar sem ter que se preocupar com passagens? A gente sim.
+				Procuramos 24 horas por dia pela melhor passagem para você
+				enquanto você arruma as malas e se prepara para a viagem ;)
+			</p>
+		</div>
+		<div class="route-fields-area">
+			<label class="route-origin-field">
+				<span class="route-origin-field-label">
+					Onde você está?
+				</span>
+				<select name="origin">
+					<option>Porto Alegre, RS</option>
+				</select>
+			</label>
+			<label class="route-destination-field">
+				<span class="route-destination-field-label">
+					Para onde gostaria de ir?
+				</span>
+				<select name="destination">
+					<option>Campina Grande, PB</option>
+				</select>
+			</label>
+		</div>
+		<a class="route-choose-dates-link btn btn-default" onclick="$(this).parents('.signaling-form').attr('current-step', 'schedule')">
+			Escolher datas &rarr;
+		</a>
 	</div>
-	<a class="schedule-change-route-link btn btn-default" href="/home">
-		&larr; Mudar trajeto
-	</a>
-	<a class="schedule-pricing-and-email-link btn btn-default" href="/preço-e-email">
-		Especificar preços &rarr;
-	</a>
-</div>
+	<div step="schedule">
+		<div>
+			<label class="schedule-departure-field">
+				<span class="schedule-departure-field-label">
+					Quando você quer sair?
+				</span>
+				<table calendar="departure" class="schedule-departure-calendar">
+				</table>
+			</label>
+			<label class="schedule-return-field">
+				<span class="schedule-return-field-label">
+					Quando você quer voltar?
+				</span>
+				<table calendar="return" month="next" class="schedule-return-calendar">
+				</table>
+			</label>
+		</div>
+		<a class="schedule-change-route-link btn btn-default" onclick="$(this).parents('.signaling-form').attr('current-step', 'route')">
+			&larr; Mudar trajeto
+		</a>
+		<a class="schedule-pricing-and-email-link btn btn-default" onclick="$(this).parents('.signaling-form').attr('current-step', 'pricing-and-email')">
+			Especificar preços &rarr;
+		</a>
+	</div>
+	<div step="pricing-and-email">
+		<div class="pricing-fields-area">
+			<label class="pricing-field">
+				<span class="pricing-field-label">
+					Quanto você está disposto a pagar por esta viagem?
+				</span>
+				<span class="text-input-prefix">
+					R$
+				</span>
+				<input class="form-control" type="spinner" min="100" name="price">
+			</label>
+		</div>
+		<div class="email-fields-area">
+			<label class="email-field">
+				<span class="email-field-label">
+					Você será avisado por e-mail quando uma passagem for encontrada.
+				</span>
+				<input class="form-control" type="email" name="email" placeholder="E-mail">
+			</label>
+		</div>
+		<input class="btn btn-info" type="submit" value="Confirmar">
+	</div>
+</form>
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/lang/pt-br.js"></script>
 <script>

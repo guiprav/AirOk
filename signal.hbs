@@ -50,9 +50,28 @@
 		<a class="schedule-change-route-link btn btn-default" onclick="$(this).parents('.signaling-form').attr('current-step', 'route')">
 			&larr; Mudar trajeto
 		</a>
-		<a class="schedule-set-prices-link btn btn-default">
+		<a class="schedule-pricing-link btn btn-default" onclick="$(this).parents('.signaling-form').attr('current-step', 'pricing')">
 			Especificar preços &rarr;
 		</a>
+	</div>
+	<div step="pricing">
+		<div class="pricing-fields-area">
+			<label class="pricing-field">
+				<span class="pricing-field-label">
+					Quanto você está disposto a pagar por esta viagem?
+				</span>
+				<input class="form-control" type="spinner" min="100" name="price" placeholder="R$">
+			</label>
+		</div>
+		<div class="email-fields-area">
+			<label class="email-field">
+				<span class="email-field-label">
+					Você será avisado por e-mail quando uma passagem for encontrada.
+				</span>
+				<input class="form-control" type="email" name="email" placeholder="E-mail">
+			</label>
+		</div>
+		<input class="btn btn-info" type="submit" value="Confirmar">
 	</div>
 </form>
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.min.js"></script>
@@ -116,7 +135,7 @@
 			(
 				'<tr>'
 					+ '<th>'
-						+ "Seq Ter Qua Qui Sex Sáb Dom".replace(/ /g, '</th><th>')
+						+ "Seg Ter Qua Qui Sex Sáb Dom".replace(/ /g, '</th><th>')
 					+ '</th>'
 				+ '</tr>'
 			);

@@ -6,9 +6,14 @@
 }
 .signaling-form
 {
-	.a-signaling-form-field-label()
+	.a-big-text()
 	{
-		display: block;
+		line-height: 2em;
+		font-size: 24px;
+		font-weight: 200;
+	}
+	.b-big-text()
+	{
 		font-size: 30px;
 		font-weight: 200;
 		@media (max-width: 600px)
@@ -25,7 +30,8 @@
 	flex-grow: 1;
 	.margin-top-bottom(30px);
 	&:not([current-step="route"]) > [step="route"],
-	&:not([current-step="schedule"]) > [step="schedule"]
+	&:not([current-step="schedule"]) > [step="schedule"],
+	&:not([current-step="pricing"]) > [step="pricing"]
 	{
 		display: none;
 	}
@@ -33,18 +39,7 @@
 	{
 		text-align: center;
 	}
-	.pitch-line
-	{
-		margin-bottom: 40px;
-		.padding-left-right(70px);
-		line-height: 2em;
-		font-size: 24px;
-		font-weight: lighter;
-		@media (max-width: 600px)
-		{
-			font-size: 18px;
-		}
-	}
 	@import 'signal-route';
 	@import 'signal-schedule';
+	@import 'signal-pricing';
 }

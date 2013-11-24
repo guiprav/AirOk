@@ -1,3 +1,13 @@
+.pitch-line
+{
+	margin-bottom: 40px;
+	.padding-left-right(70px);
+	.a-big-text();
+	@media (max-width: 600px)
+	{
+		font-size: 18px;
+	}
+}
 .route-fields-area
 {
 	background-color: @bba-bg-color;
@@ -21,7 +31,8 @@
 .route-origin-field-label,
 .route-destination-field-label
 {
-	.a-signaling-form-field-label();
+	display: block;
+	.b-big-text();
 }
 [name="origin"],
 [name="destination"]
